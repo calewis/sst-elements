@@ -172,7 +172,7 @@ cpu0_l1dcache.addParams({
       "cache_line_size" : "64",
       "cache_size" : "32 KB",
       "L1" : "1",
-      "debug" : 1,
+      "debug" : 0,
       "debug_level" : 11
 })
 l1dcache_2_cpu     = cpu0_l1dcache.setSubComponent("cpulink", "memHierarchy.MemLink")
@@ -202,7 +202,7 @@ cpu0_l2cache.addParams({
       "coherence_protocol" : "MESI",
       "associativity" : "16",
       "cache_line_size" : "64",
-      "debug" : 1,
+      "debug" : 0,
       "debug_level" : 11,
       "cache_size" : "1MB",
 })
@@ -237,7 +237,7 @@ dirctrl = sst.Component("dirctrl", "memHierarchy.DirectoryController")
 dirctrl.addParams({
       "coherence_protocol" : "MSI",
       "entry_cache_size" : "1024",
-      "debug" : 1,
+      "debug" : 0,
       "debug_level" : 10,
       "addr_range_start" : "0x0",
       "addr_range_end" : "0xFFFFFF00"

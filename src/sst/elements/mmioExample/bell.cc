@@ -25,9 +25,6 @@ public:
     setBell(Output *out) : StandardMem::RequestHandler(out) {}
 
     void handle(Interfaces::StandardMem::Write *write) override {
-      out->output("In place that the bell should ring.\n");
-      out->flush();
-      std::cout << "Test CallBack" << std::endl;
       if (write->data.front() > 0) {
         out->output("Christmas\a are ringing!");
         out->flush();
@@ -44,7 +41,6 @@ public:
         "iface", ComponentInfo::SHARE_NONE, tc, &handler_);
     auto vanadisMagicValue = 0xFFFFFFF0;
     iface_->setMemoryMappedAddressRegion(vanadisMagicValue, 1);
-    std::cout << "I am constructed!" << std::endl;
 
     registerAsPrimaryComponent();
     primaryComponentDoNotEndSim();
@@ -56,7 +52,6 @@ public:
 
 private:
   void handleEvent(StandardMem::Request *req) {
-    std::cout << "Test handler" << std::endl;
     req->handle(&handlers_);
     primaryComponentOKToEndSim();
     delete req;
